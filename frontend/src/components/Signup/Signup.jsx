@@ -2,23 +2,48 @@ import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import styles from "../../styles/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { server } from "../../server";
 function Signup() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
-
-  /* ----- handle Submit------ */
-  const handleSubmit = () => {
-    console.log("first");
-  };
+  const navigate = useNavigate();
 
   /* ------ handle File Input----- */
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     setAvatar(file);
+  };
+
+  /* ----- handle Submit------ */
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const config = {
+      headers: { "Content-Type": "multipart/form-data" },
+    };
+
+    const newform = new FormData();
+
+    newform.append("name", name);
+    newform.append("file", avatar);
+    newform.append("email", email);
+    newform.append("password", password);
+
+    axios
+      .post(`${server}/user/create-user`, newform, config)
+      .then((res) => {
+        if (res.data.success === true) {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -30,7 +55,7 @@ function Signup() {
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
