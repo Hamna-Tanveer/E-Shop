@@ -5,6 +5,7 @@ import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
+import { toast } from "react-toastify";
 function Signup() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -34,15 +35,19 @@ function Signup() {
     newform.append("email", email);
     newform.append("password", password);
 
-    axios
+    await axios
       .post(`${server}/user/create-user`, newform, config)
       .then((res) => {
-        if (res.data.success === true) {
-          navigate("/");
-        }
+        //console.log(res.message);
+        toast.success(res.data.message);
+
+        setName("");
+        setEmail("");
+        setPassword("");
+        setAvatar("");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.message);
       });
   };
 
