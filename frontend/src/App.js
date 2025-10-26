@@ -1,9 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage, SignupPage, ActivationPage } from "./Routes.js";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import { useEffect } from "react";
+import axios from "axios";
+import { server } from "./server.js";
 function App() {
+  useEffect(() => {
+    axios
+      .get(`${server}/user/getuser`, { withCredentials: true })
+      .then((res) => {
+        toast.success(res.data.message);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
