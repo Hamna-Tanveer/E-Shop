@@ -12,7 +12,6 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
-  const navigate = useNavigate();
 
   /* ------ handle File Input----- */
   const handleFileInputChange = (e) => {
