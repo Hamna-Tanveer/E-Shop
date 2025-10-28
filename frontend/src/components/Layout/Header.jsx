@@ -109,7 +109,7 @@ function Header({ activeHeading }) {
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
         >
           {/* Categories */}
-          <div>
+          <div onClick={() => setDropdown(!dropDown)}>
             <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block ">
               <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
 
