@@ -602,12 +602,15 @@ export const footerProductLinks = [
   },
   {
     name: "Store Locations",
+    link: "/store-location",
   },
   {
     name: "Our Blog",
+    link: "/our-blog",
   },
   {
     name: "Reviews",
+    link: "/reviews",
   },
 ];
 

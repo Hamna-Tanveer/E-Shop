@@ -23,6 +23,7 @@ function Login() {
       .then((res) => {
         toast.success("Login Successfully!");
         navigate("/");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
