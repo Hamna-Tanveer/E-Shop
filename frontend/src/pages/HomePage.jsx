@@ -5,6 +5,7 @@ import BestDeals from "../components/Route/BestDeals/BestDeals.jsx";
 import FeaturedProducts from "../components/Route/FeaturedProducts/FeaturedProducts.jsx";
 import Events from "../components/Events/Events.jsx";
 import Sponsored from "../components/Route/Sponsored.jsx";
+import Footer from "../components/Layout/Footer.jsx";
 function HomePage() {
   return (
     <div>
@@ -15,6 +16,7 @@ function HomePage() {
       <Events />
       <FeaturedProducts />
       <Sponsored />
+      <Footer />
     </div>
   );
 }
