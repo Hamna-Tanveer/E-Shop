@@ -4,6 +4,7 @@ import Categories from "../components/Route/Categories/Categories.jsx";
 import BestDeals from "../components/Route/BestDeals/BestDeals.jsx";
 import FeaturedProducts from "../components/Route/FeaturedProducts/FeaturedProducts.jsx";
 import Events from "../components/Events/Events.jsx";
+import Sponsored from "../components/Route/Sponsored.jsx";
 function HomePage() {
   return (
     <div>
@@ -13,6 +14,7 @@ function HomePage() {
       <BestDeals />
       <Events />
       <FeaturedProducts />
+      <Sponsored />
     </div>
   );
 }

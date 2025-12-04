@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const CountDown = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  console.log(timeLeft);
+  //console.log(timeLeft);
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
