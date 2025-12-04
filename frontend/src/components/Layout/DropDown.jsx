@@ -10,7 +10,7 @@ function DropDown({ categoriesData, setDropdown }) {
     window.location.reload();
   };
   return (
-    <div className="pb-4 w-[270px] bg-[#fff] absolute z-23 rounded-b-md shadow-sm">
+    <div className="pb-4 w-[270px] bg-[#fff] absolute z-30 rounded-b-md shadow-sm">
       {categoriesData &&
         categoriesData.map((i, index) => (
           <div
