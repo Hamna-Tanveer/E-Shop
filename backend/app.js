@@ -7,9 +7,9 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // frontend origin
+    origin: ["http://localhost:3000", "http://localhost:3001"], // frontend origin
     credentials: true, // allow cookies / auth headers
-  })
+  }),
 );
 
 app.use(express.json());
