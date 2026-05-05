@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
+import logo from "../../Assets/logo.svg";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -55,10 +56,7 @@ function Header({ activeHeading }) {
         <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
           <div>
             <Link to="/">
-              <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
-                alt="loading"
-              />
+              <img src={logo} alt="Logo" />
             </Link>
           </div>
           {/* Search box*/}
