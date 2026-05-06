@@ -14,8 +14,8 @@ const { isAuthenticated } = require("../middleware/auth");
 
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
   try {
-    ////console.log("REQ BODY:", req.body);
-    ///console.log("REQ FILE:", req.file);
+    console.log("REQ BODY:", req.body);
+    console.log("REQ FILE:", req.file);
 
     const { name, email, password } = req.body;
     const userEmail = await User.findOne({ email });
@@ -79,7 +79,7 @@ router.post(
 
       const newUser = jwt.verify(
         activation_token,
-        process.env.ACTIVATION_SECRET
+        process.env.ACTIVATION_SECRET,
       );
 
       if (!newUser) {
@@ -106,7 +106,7 @@ router.post(
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
-  })
+  }),
 );
 
 //login user
@@ -127,7 +127,7 @@ router.post(
       }
       const isPasswordValid = await user.comparePassword(password);
 
-      console.log(isPasswordValid);
+      // console.log(isPasswordValid);
       if (!isPasswordValid) {
         return next(new ErrorHandler("Please provide correct password", 400));
       }
@@ -136,7 +136,7 @@ router.post(
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
-  })
+  }),
 );
 
 // load user or get User
@@ -154,7 +154,29 @@ router.get(
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
-  })
+  }),
+);
+
+// log out
+
+router.get(
+  "/logout",
+  isAuthenticated,
+  catchAsyncError(async (req, res, next) => {
+    try {
+      res.cookie("token", null, {
+        expires: new Date(Date.now()),
+        httpOnly: true,
+      });
+
+      res.status(201).json({
+        success: true,
+        message: "Log Out Successful!",
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  }),
 );
 
 module.exports = router;

@@ -37,7 +37,7 @@ function Signup() {
     await axios
       .post(`${server}/user/create-user`, newform, config)
       .then((res) => {
-        //console.log(res.message);
+        console.log(res.message);
         toast.success(res.data.message);
 
         setName("");
@@ -46,6 +46,7 @@ function Signup() {
         setAvatar("");
       })
       .catch((err) => {
+        console.log(err);
         toast.error(err.response.data.message);
       });
   };
