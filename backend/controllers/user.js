@@ -8,7 +8,6 @@ const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
 const catchAsyncError = require("../middleware/catchAsyncError");
-const user = require("../model/user");
 const sendToken = require("../utils/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
 

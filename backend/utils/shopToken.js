@@ -1,5 +1,5 @@
 // create token and sending this in cookies
-const sendToken = (user, statusCode, res) => {
+const sendShopToken = (user, statusCode, res) => {
   const token = user.getJwtToken();
 
   //Options for cookies
@@ -8,10 +8,10 @@ const sendToken = (user, statusCode, res) => {
     httpOnly: true,
   };
 
-  res.status(statusCode).cookie("token", token, Options).json({
+  res.status(statusCode).cookie("seller_token", token, Options).json({
     success: true,
     user,
     token,
   });
 };
-module.exports = sendToken;
+module.exports = sendShopToken;
