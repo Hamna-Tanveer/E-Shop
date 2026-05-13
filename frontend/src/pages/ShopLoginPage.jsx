@@ -5,13 +5,13 @@ import { useEffect } from "react";
 
 const ShopLoginPage = () => {
   const navigate = useNavigate();
-  const { isSeller, seller } = useSelector((state) => state.seller);
+  const { isSeller, isLaoding } = useSelector((state) => state.seller);
 
   useEffect(() => {
     if (isSeller === true) {
-      navigate(`/shop/${seller._id}`);
+      navigate(`/dashboard`);
     }
-  });
+  }, [isLaoding, isSeller]);
   return (
     <div>
       <ShopLogin />
