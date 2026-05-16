@@ -15,6 +15,7 @@ const cors = require("cors");
 //import  routes
 const user = require("./controllers/user");
 const shop = require("./controllers/shop");
+const product = require("./controllers/product");
 
 app.use(
   cors({
@@ -30,6 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 app.use("/api/v2/user", user);
 app.use("/api/v2/shop", shop);
+app.use("/api/v2/product", product);
 
 //It's for ErrorHandling
 app.use(ErrorHandler);
