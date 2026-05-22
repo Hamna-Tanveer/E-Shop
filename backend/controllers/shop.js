@@ -163,4 +163,26 @@ router.get(
     }
   }),
 );
+
+//Logout from shop
+
+router.get(
+  "/shop-logout",
+  isSellerAuthenticated,
+  catchAsyncError(async (req, res, next) => {
+    try {
+      res.cookie("seller_token", null, {
+        expires: new Date(Date.now()),
+        httpOnly: true,
+      });
+
+      return res.status(200).json({
+        success: true,
+        message: "Log Out Successful!",
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  }),
+);
 module.exports = router;
