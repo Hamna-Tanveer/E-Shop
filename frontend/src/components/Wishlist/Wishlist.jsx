@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCartPlus } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
 
 const Cart = ({ setOpenWishlist }) => {
