@@ -1,45 +1,43 @@
 import axios from "axios";
 import { server } from "../../server";
 
-//create-product
-export const createProduct = (newForm) => async (dispatch) => {
+//create-event
+export const createEvent = (newForm) => async (dispatch) => {
   try {
     dispatch({
-      type: "productCreateRequest",
+      type: "eventCreateRequest",
     });
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     const { data } = await axios.post(
-      `${server}/product/create-product`,
+      `${server}/event/create-event`,
       newForm,
       config,
     );
     dispatch({
-      type: "productCreateSuccess",
-      payload: data.product,
+      type: "eventCreateSuccess",
+      payload: data.event,
     });
   } catch (error) {
     dispatch({
-      type: "productCreateFail",
+      type: "eventCreateFail",
       payload: error.response.data.message,
     });
   }
 };
 
-//get allProducts
-export const getAllProducts = (id) => async (dispatch) => {
+//get all events
+export const getAllEvents = (id) => async (dispatch) => {
   try {
     dispatch({
-      type: "getAllProductRequest",
+      type: "getAllEventsRequest",
     });
-    const { data } = await axios.get(
-      `${server}/product/get-all-products-shop/${id}`,
-    );
+    const { data } = await axios.get(`${server}/event/get-all-events/${id}`);
 
     dispatch({
-      type: "getAllProductSuccess",
-      payload: data.products,
+      type: "getAllEventsSuccess",
+      payload: data.events,
     });
 
     dispatch({
@@ -47,31 +45,31 @@ export const getAllProducts = (id) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: "getAllProductFail",
+      type: "getAllEventsFail",
       payload: error.response.data.message,
     });
   }
 };
 
-//delete products
+//delete event
 
-export const deleteProduct = (id) => async (dispatch) => {
+export const deleteEvent = (id) => async (dispatch) => {
   try {
     dispatch({
-      type: "deleteProductRequest",
+      type: "deleteEventRequest",
     });
 
     const { data } = await axios.delete(
-      `${server}/product/delete-shop-product/${id}`,
+      `${server}/event/delete-shop-event/${id}`,
       { withCredentials: true },
     );
     dispatch({
-      type: "deleteProductSuccess",
+      type: "deleteEventSuccess",
       payload: data.message,
     });
   } catch (error) {
     dispatch({
-      type: "deleteProductFail",
+      type: "deleteEventFail",
       payload: error.response.data.message,
     });
   }

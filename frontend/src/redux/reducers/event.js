@@ -4,48 +4,48 @@ const initialState = {
   isLoading: true,
 };
 
-export const productReducer = createReducer(initialState, (builder) => {
+export const eventReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase("productCreateRequest", (state) => {
+    .addCase("eventCreateRequest", (state) => {
       state.isLoading = true;
     })
-    .addCase("productCreateSuccess", (state, action) => {
+    .addCase("eventCreateSuccess", (state, action) => {
       state.isLoading = false;
-      state.product = action.payload;
+      state.event = action.payload;
       state.success = true;
     })
-    .addCase("productCreateFail", (state, action) => {
+    .addCase("eventCreateFail", (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
       state.success = false;
     })
 
-    //Get All Products
-    .addCase("getAllProductsRequest", (state) => {
+    //Get All events
+    .addCase("getAllEventsRequest", (state) => {
       state.isLoading = true;
     })
-    .addCase("getAllProductSuccess", (state, action) => {
+    .addCase("getAllEventsSuccess", (state, action) => {
       state.isLoading = false;
-      state.products = action.payload;
+      state.events = action.payload;
       state.success = true;
     })
-    .addCase("getAllProductsFail", (state, action) => {
+    .addCase("getAllEventsFail", (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
       state.success = false;
     })
 
-    // delete product
+    // delete event
 
-    .addCase("deleteProductRequest", (state) => {
+    .addCase("deleteEventRequest", (state) => {
       state.isLoading = true;
     })
-    .addCase("deleteProductSuccess", (state, action) => {
+    .addCase("deleteEventSuccess", (state, action) => {
       state.isLoading = false;
       state.success = true;
       state.message = action.payload;
     })
-    .addCase("deleteProductFail", (state, action) => {
+    .addCase("deleteEventFail", (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
       state.success = false;
@@ -54,7 +54,6 @@ export const productReducer = createReducer(initialState, (builder) => {
     .addCase("clearSuccess", (state) => {
       state.success = false;
     })
-
     // to null errors
     .addCase("clearErrors", (state) => {
       state.error = null;

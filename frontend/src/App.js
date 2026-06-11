@@ -20,6 +20,8 @@ import {
   ShopDashboardPage,
   ShopCreateProductPage,
   ShopAllProductsPage,
+  ShopCreateEventsPage,
+  ShopAllEventsPage,
 } from "./routes/ShopRoutes.js";
 
 import { useEffect } from "react";
@@ -106,6 +108,22 @@ function App() {
           element={
             <SellerProtectedRoute>
               <ShopAllProductsPage />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard-create-event"
+          element={
+            <SellerProtectedRoute>
+              <ShopCreateEventsPage />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard-events"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllEventsPage />
             </SellerProtectedRoute>
           }
         />
